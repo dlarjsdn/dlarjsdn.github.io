@@ -1,213 +1,703 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Geonwoo | Computer Engineering Portfolio</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Geonwoo | Portfolio</title>
+  <meta name="description" content="Portfolio of Geonwoo, a Computer Engineering student interested in computer architecture, operating systems, and system performance." />
+  <style>
+    :root {
+      --bg: #0b1020;
+      --bg-soft: #121933;
+      --card: rgba(255, 255, 255, 0.06);
+      --card-border: rgba(255, 255, 255, 0.12);
+      --text: #e8ecf8;
+      --muted: #aab4d3;
+      --accent: #7aa2ff;
+      --accent-2: #8ef0d0;
+      --shadow: 0 20px 50px rgba(0, 0, 0, 0.28);
+      --max: 1120px;
+    }
 
-<style>
-body {
-    margin: 0;
-    font-family: Arial, Helvetica, sans-serif;
-    background: #f4f6f9;
-    color: #222;
-}
+    * {
+      box-sizing: border-box;
+    }
 
-header {
-    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
-    color: white;
-    padding: 80px 20px;
-    text-align: center;
-}
+    html {
+      scroll-behavior: smooth;
+    }
 
-header h1 {
-    font-size: 48px;
-    margin-bottom: 10px;
-}
+    body {
+      margin: 0;
+      font-family: "Segoe UI", Inter, Arial, sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(122, 162, 255, 0.18), transparent 28%),
+        radial-gradient(circle at top right, rgba(142, 240, 208, 0.12), transparent 20%),
+        linear-gradient(180deg, #0a0f1d 0%, #0d1326 40%, #0b1020 100%);
+      color: var(--text);
+      line-height: 1.7;
+    }
 
-header h2 {
-    font-weight: normal;
-    opacity: 0.9;
-}
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
 
-nav {
-    background: white;
-    padding: 15px;
-    text-align: center;
-    border-bottom: 1px solid #ddd;
-    position: sticky;
-    top: 0;
-}
+    a:hover {
+      text-decoration: underline;
+    }
 
-nav a {
-    margin: 0 20px;
-    text-decoration: none;
-    color: #333;
-    font-weight: bold;
-}
+    .container {
+      width: min(92%, var(--max));
+      margin: 0 auto;
+    }
 
-section {
-    max-width: 1000px;
-    margin: 60px auto;
-    background: white;
-    padding: 40px;
-    border-radius: 12px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-}
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      backdrop-filter: blur(14px);
+      background: rgba(10, 15, 29, 0.72);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
 
-h3 {
-    border-left: 6px solid #2c5364;
-    padding-left: 10px;
-}
+    .nav-inner {
+      width: min(92%, var(--max));
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px 0;
+    }
 
-.profile {
-    display: flex;
-    gap: 40px;
-    align-items: center;
-}
+    .brand {
+      font-size: 1.05rem;
+      font-weight: 700;
+      letter-spacing: 0.4px;
+      color: #ffffff;
+    }
 
-.profile img {
-    width: 200px;
-    border-radius: 50%;
-}
+    .nav-links {
+      display: flex;
+      gap: 22px;
+      flex-wrap: wrap;
+    }
 
-.skill-box span {
-    display: inline-block;
-    background: #e8edf3;
-    padding: 8px 14px;
-    margin: 6px;
-    border-radius: 20px;
-    font-size: 14px;
-}
+    .nav-links a {
+      color: var(--muted);
+      font-size: 0.96rem;
+      transition: color 0.2s ease;
+    }
 
-.project {
-    margin-bottom: 25px;
-}
+    .nav-links a:hover {
+      color: #fff;
+      text-decoration: none;
+    }
 
-footer {
-    text-align: center;
-    padding: 30px;
-    background: #2c5364;
-    color: white;
-    margin-top: 60px;
-}
-</style>
+    .hero {
+      padding: 92px 0 64px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.25fr 0.75fr;
+      gap: 28px;
+      align-items: stretch;
+    }
+
+    .hero-card,
+    .glass-card {
+      background: var(--card);
+      border: 1px solid var(--card-border);
+      border-radius: 24px;
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(10px);
+    }
+
+    .hero-card {
+      padding: 42px;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      font-size: 0.86rem;
+      font-weight: 700;
+      color: var(--accent-2);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 18px;
+    }
+
+    .hero h1 {
+      margin: 0 0 16px;
+      font-size: clamp(2.4rem, 5vw, 4.4rem);
+      line-height: 1.08;
+      letter-spacing: -0.03em;
+    }
+
+    .hero h1 span {
+      color: var(--accent);
+    }
+
+    .hero p.lead {
+      margin: 0 0 26px;
+      color: var(--muted);
+      font-size: 1.08rem;
+      max-width: 760px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-top: 8px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 12px 18px;
+      border-radius: 999px;
+      font-weight: 700;
+      font-size: 0.95rem;
+      transition: transform 0.2s ease, opacity 0.2s ease, background 0.2s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-1px);
+      text-decoration: none;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent), #5d84ff);
+      color: white;
+    }
+
+    .btn-secondary {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.14);
+      color: white;
+    }
+
+    .hero-side {
+      padding: 28px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    .photo-box {
+      aspect-ratio: 1 / 1;
+      border-radius: 20px;
+      border: 1px dashed rgba(255,255,255,0.22);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--muted);
+      text-align: center;
+      padding: 20px;
+      background: rgba(255,255,255,0.03);
+      overflow: hidden;
+    }
+
+    .photo-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .mini-card {
+      padding: 18px 18px 16px;
+      border-radius: 18px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .mini-card h3 {
+      margin: 0 0 8px;
+      font-size: 0.95rem;
+      color: #fff;
+    }
+
+    .mini-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    section {
+      padding: 18px 0 48px;
+    }
+
+    .section-title {
+      margin: 0 0 8px;
+      font-size: 2rem;
+      letter-spacing: -0.02em;
+    }
+
+    .section-subtitle {
+      margin: 0 0 26px;
+      color: var(--muted);
+      max-width: 760px;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--card-border);
+      border-radius: 22px;
+      box-shadow: var(--shadow);
+      padding: 26px;
+    }
+
+    .card h3 {
+      margin: 0 0 12px;
+      font-size: 1.12rem;
+      letter-spacing: -0.01em;
+    }
+
+    .card p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .about-list,
+    .focus-list,
+    .timeline,
+    .contact-list {
+      margin: 0;
+      padding-left: 18px;
+      color: var(--muted);
+    }
+
+    .about-list li,
+    .focus-list li,
+    .timeline li,
+    .contact-list li {
+      margin-bottom: 10px;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .tag {
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: rgba(122, 162, 255, 0.12);
+      color: #dce6ff;
+      border: 1px solid rgba(122, 162, 255, 0.18);
+      font-size: 0.92rem;
+      font-weight: 600;
+    }
+
+    .project-card {
+      height: 100%;
+    }
+
+    .project-card .label {
+      display: inline-block;
+      margin-bottom: 10px;
+      font-size: 0.78rem;
+      color: var(--accent-2);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+
+    .project-card h3 {
+      margin-bottom: 10px;
+      font-size: 1.15rem;
+    }
+
+    .project-card p {
+      margin-bottom: 14px;
+    }
+
+    .project-card ul {
+      padding-left: 18px;
+      color: var(--muted);
+      margin: 0;
+    }
+
+    .project-card li {
+      margin-bottom: 8px;
+    }
+
+    .footer {
+      padding: 32px 0 54px;
+      color: var(--muted);
+      text-align: center;
+      font-size: 0.95rem;
+    }
+
+    .divider {
+      height: 1px;
+      background: linear-gradient(to right, transparent, rgba(255,255,255,0.12), transparent);
+      margin: 14px 0 24px;
+    }
+
+    @media (max-width: 960px) {
+      .hero-grid,
+      .grid-2,
+      .grid-3 {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-card {
+        padding: 32px 24px;
+      }
+
+      .hero-side {
+        padding: 24px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .nav-inner {
+        gap: 16px;
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .nav-links {
+        gap: 14px;
+      }
+
+      .hero {
+        padding-top: 72px;
+      }
+
+      .hero h1 {
+        font-size: 2.4rem;
+      }
+
+      .section-title {
+        font-size: 1.7rem;
+      }
+
+      .card {
+        padding: 22px;
+      }
+    }
+  </style>
 </head>
-
 <body>
+  <nav class="nav">
+    <div class="nav-inner">
+      <div class="brand">Geonwoo</div>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#research">Research Interests</a>
+        <a href="#projects">Academic Work</a>
+        <a href="#skills">Skills</a>
+        <a href="#plans">Plans</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </nav>
 
-<header>
-    <h1>Geonwoo</h1>
-    <h2>Computer Engineering Student | Computer Architecture Research Interest</h2>
-</header>
-
-<nav>
-    <a href="#about">About</a>
-    <a href="#interest">Research Interest</a>
-    <a href="#skills">Skills</a>
-    <a href="#projects">Academic Work</a>
-    <a href="#contact">Contact</a>
-</nav>
-
-<section id="about">
-    <h3>About Me</h3>
-
-    <div class="profile">
-        <!-- ⭐ 여기 사진 넣으면 됨 -->
-        <img src="profile.jpg" alt="profile photo">
-
-        <div>
-            <p>
-            안녕하세요. 한국외국어대학교 컴퓨터공학부 4학년에 재학 중인 Geonwoo입니다.
-            조기 졸업을 예정하고 있으며 컴퓨터구조 및 시스템 분야 대학원 진학을 목표로 학업을 이어가고 있습니다.
-            </p>
-
-            <p>
-            학부 과정에서 운영체제, 컴퓨터구조, 병렬처리와 같은 low-level 시스템 과목에 큰 흥미를 느끼게 되었고,
-            소프트웨어와 하드웨어의 상호작용을 깊이 이해하는 것을 목표로 공부하고 있습니다.
-            </p>
-
-            <p>
-            특히 CPU 및 GPU 아키텍처, 메모리 계층 구조, 멀티코어 시스템에서의 성능 특성 분석에 관심이 있으며,
-            실제 시스템 동작을 분석하고 실험하는 과정 자체를 즐기는 편입니다.
-            </p>
+  <header class="hero">
+    <div class="container hero-grid">
+      <div class="hero-card">
+        <div class="eyebrow">Computer Engineering Portfolio</div>
+        <h1>Hi, I’m <span>Geonwoo</span>.</h1>
+        <p class="lead">
+          I am a senior undergraduate student in <strong>Computer Engineering</strong> at
+          <strong>Hankuk University of Foreign Studies</strong>, preparing for early graduation
+          and graduate study in <strong>computer architecture</strong>. My academic interests
+          center on <strong>GPU architecture</strong>, <strong>memory hierarchy</strong>,
+          <strong>operating systems</strong>, and <strong>performance analysis</strong>.
+        </p>
+        <p class="lead">
+          I am especially interested in how modern computing systems achieve performance through
+          architectural design choices, parallelism, and efficient interaction between software and hardware.
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#projects">View Academic Work</a>
+          <a class="btn btn-secondary" href="#contact">Contact Me</a>
         </div>
+      </div>
+
+      <div class="glass-card hero-side">
+        <div class="photo-box">
+          <!-- Replace profile.jpg with your own image file after uploading it to the repo -->
+          <!-- Example: <img src="profile.jpg" alt="Profile photo of Geonwoo"> -->
+          <div>
+            <strong>Photo Placeholder</strong><br />
+            Upload <code>profile.jpg</code><br />
+            to your repository and replace this box with your image.
+          </div>
+        </div>
+
+        <div class="mini-card">
+          <h3>Academic Snapshot</h3>
+          <p>
+            Senior undergraduate student · Early graduation candidate · Preparing for graduate school in
+            computer architecture and systems.
+          </p>
+        </div>
+
+        <div class="mini-card">
+          <h3>Key Strengths</h3>
+          <p>
+            Strong interest in low-level systems, architectural thinking, analytical study,
+            and performance-oriented reasoning.
+          </p>
+        </div>
+      </div>
     </div>
-</section>
+  </header>
 
-<section id="interest">
-    <h3>Research Interest</h3>
+  <main class="container">
+    <section id="about">
+      <h2 class="section-title">About Me</h2>
+      <p class="section-subtitle">
+        A brief introduction to my academic background, interests, and current focus.
+      </p>
 
-    <ul>
-        <li>Computer Architecture</li>
-        <li>GPU Architecture & Parallel Computing</li>
-        <li>Memory Hierarchy and Cache Behavior</li>
-        <li>Operating System Internals</li>
-        <li>Performance Analysis and System Optimization</li>
-        <li>Multi-core and Many-core Processing</li>
-        <li>Deep Learning System Architecture</li>
-    </ul>
-</section>
+      <div class="grid-2">
+        <div class="card">
+          <h3>Profile</h3>
+          <div class="divider"></div>
+          <ul class="about-list">
+            <li>Senior undergraduate student majoring in <strong>Computer Engineering</strong>.</li>
+            <li>Currently studying at <strong>Hankuk University of Foreign Studies</strong>.</li>
+            <li>Preparing for <strong>early graduation</strong> and graduate study.</li>
+            <li>Interested in the intersection of <strong>hardware architecture</strong>, <strong>systems software</strong>, and <strong>performance optimization</strong>.</li>
+            <li>Earned <strong>A+</strong> in <strong>Computer Architecture</strong> and <strong>Operating Systems</strong>.</li>
+          </ul>
+        </div>
 
-<section id="skills">
-    <h3>Technical Skills</h3>
+        <div class="card">
+          <h3>Academic Perspective</h3>
+          <div class="divider"></div>
+          <p>
+            My main motivation is to understand how complex computing systems work under the surface.
+            I am drawn to questions about instruction flow, memory behavior, parallel execution,
+            system bottlenecks, and the design trade-offs that shape modern processors and runtime systems.
+          </p>
+          <br />
+          <p>
+            Rather than viewing software and hardware as separate layers, I am interested in how they
+            influence each other in real systems, especially in high-performance and data-intensive workloads.
+          </p>
+        </div>
+      </div>
+    </section>
 
-    <div class="skill-box">
-        <span>C</span>
-        <span>C++</span>
-        <span>Python</span>
-        <span>Linux</span>
-        <span>Assembly (basic)</span>
-        <span>Git / GitHub</span>
-        <span>System Programming</span>
-        <span>Performance Analysis</span>
-    </div>
-</section>
+    <section id="research">
+      <h2 class="section-title">Research Interests</h2>
+      <p class="section-subtitle">
+        Topics I am currently most interested in for graduate study and long-term academic development.
+      </p>
 
-<section id="projects">
-    <h3>Academic Work & Study Topics</h3>
+      <div class="card">
+        <div class="tags">
+          <span class="tag">Computer Architecture</span>
+          <span class="tag">GPU Architecture</span>
+          <span class="tag">Memory Hierarchy</span>
+          <span class="tag">Operating Systems</span>
+          <span class="tag">Parallel Computing</span>
+          <span class="tag">Performance Analysis</span>
+          <span class="tag">Multicore Systems</span>
+          <span class="tag">Deep Learning Systems</span>
+          <span class="tag">Cache Behavior</span>
+          <span class="tag">System Optimization</span>
+        </div>
+      </div>
 
-    <div class="project">
-        <strong>CPU Pipeline & Hazard Analysis</strong>
-        <p>
-        Instruction-level parallelism과 pipeline hazard의 발생 원인을 분석하고,
-        성능에 미치는 영향을 이해하기 위한 이론 및 실험 기반 학습을 수행하였습니다.
-        </p>
-    </div>
+      <div class="grid-2" style="margin-top:24px;">
+        <div class="card">
+          <h3>Current Focus</h3>
+          <div class="divider"></div>
+          <ul class="focus-list">
+            <li>GPU execution models and architectural implications for parallel workloads</li>
+            <li>Memory hierarchy design, cache locality, and access pattern analysis</li>
+            <li>Operating system internals related to scheduling, synchronization, and resource management</li>
+            <li>Performance bottlenecks in multicore and many-core environments</li>
+          </ul>
+        </div>
 
-    <div class="project">
-        <strong>Operating System Scheduling Study</strong>
-        <p>
-        다양한 scheduling policy의 특성을 비교하며 프로세스 실행 흐름과 context switching overhead에 대해 분석하였습니다.
-        </p>
-    </div>
+        <div class="card">
+          <h3>Graduate Study Direction</h3>
+          <div class="divider"></div>
+          <p>
+            I plan to continue studying architecture- and systems-related topics at the graduate level,
+            with particular interest in performance-aware computing platforms, hardware-software interaction,
+            and efficient execution mechanisms for emerging workloads.
+          </p>
+        </div>
+      </div>
+    </section>
 
-    <div class="project">
-        <strong>Memory Hierarchy Performance Study</strong>
-        <p>
-        Cache locality, memory access pattern, latency hiding 기법 등에 대한 이해를 중심으로 시스템 성능 분석을 수행하였습니다.
-        </p>
-    </div>
+    <section id="projects">
+      <h2 class="section-title">Academic Work</h2>
+      <p class="section-subtitle">
+        Selected topics and project-style studies that reflect my interest in architecture, systems, and performance.
+      </p>
 
-    <div class="project">
-        <strong>Synchronization & Concurrency Concepts</strong>
-        <p>
-        Mutual exclusion, semaphore, producer-consumer problem 등 병행성 제어 기법을 학습하고 구현 실습을 진행하였습니다.
-        </p>
-    </div>
+      <div class="grid-3">
+        <div class="card project-card">
+          <div class="label">Architecture</div>
+          <h3>CPU Pipeline & Hazard Analysis</h3>
+          <p>
+            Studied instruction pipelines, data hazards, control hazards, and performance trade-offs
+            in pipelined processor design.
+          </p>
+          <ul>
+            <li>Analyzed instruction flow and dependency patterns</li>
+            <li>Examined bottlenecks affecting throughput and latency</li>
+            <li>Focused on architecture-level reasoning rather than surface-level implementation only</li>
+          </ul>
+        </div>
 
-</section>
+        <div class="card project-card">
+          <div class="label">Operating Systems</div>
+          <h3>Scheduling & Concurrency Study</h3>
+          <p>
+            Explored scheduling behavior, synchronization concepts, and process coordination
+            in operating system environments.
+          </p>
+          <ul>
+            <li>Compared scheduling policies and execution characteristics</li>
+            <li>Studied context switching overhead and process behavior</li>
+            <li>Worked through synchronization concepts such as mutual exclusion and semaphores</li>
+          </ul>
+        </div>
 
-<section id="contact">
-    <h3>Contact</h3>
+        <div class="card project-card">
+          <div class="label">Performance</div>
+          <h3>Memory Hierarchy Performance Analysis</h3>
+          <p>
+            Investigated locality, cache efficiency, memory access patterns,
+            and their impact on overall system performance.
+          </p>
+          <ul>
+            <li>Studied temporal and spatial locality</li>
+            <li>Connected workload patterns to cache and memory behavior</li>
+            <li>Focused on practical performance interpretation</li>
+          </ul>
+        </div>
+      </div>
 
-    <p>GitHub: https://github.com/dlarjsdn</p>
-    <p>Email: (여기 본인 이메일 넣기)</p>
-</section>
+      <div class="grid-2" style="margin-top:22px;">
+        <div class="card project-card">
+          <div class="label">Parallel Systems</div>
+          <h3>Multicore & Parallel Computing Study</h3>
+          <p>
+            Built a stronger understanding of how modern systems scale performance through
+            parallel execution and architectural support.
+          </p>
+          <ul>
+            <li>Studied multicore execution models and coordination issues</li>
+            <li>Examined the relationship between architecture and parallel software behavior</li>
+            <li>Connected architectural concepts to system-level performance thinking</li>
+          </ul>
+        </div>
 
-<footer>
-    © 2026 Geonwoo | Computer Engineering Portfolio
-</footer>
+        <div class="card project-card">
+          <div class="label">Emerging Focus</div>
+          <h3>Deep Learning Systems Perspective</h3>
+          <p>
+            Developed growing interest in the architectural and systems challenges behind
+            modern deep learning workloads and accelerators.
+          </p>
+          <ul>
+            <li>Interested in GPU-driven computation and throughput-oriented design</li>
+            <li>Motivated by how hardware architecture shapes AI system performance</li>
+            <li>Considering this as a future graduate-level research direction</li>
+          </ul>
+        </div>
+      </div>
+    </section>
 
+    <section id="skills">
+      <h2 class="section-title">Technical Skills</h2>
+      <p class="section-subtitle">
+        Tools and technical foundations that support my academic work and study.
+      </p>
+
+      <div class="grid-2">
+        <div class="card">
+          <h3>Programming & Environment</h3>
+          <div class="divider"></div>
+          <div class="tags">
+            <span class="tag">C</span>
+            <span class="tag">C++</span>
+            <span class="tag">Python</span>
+            <span class="tag">Linux</span>
+            <span class="tag">Git</span>
+            <span class="tag">GitHub</span>
+            <span class="tag">Basic Assembly</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>Academic Strength Areas</h3>
+          <div class="divider"></div>
+          <div class="tags">
+            <span class="tag">Computer Architecture</span>
+            <span class="tag">Operating Systems</span>
+            <span class="tag">System Programming</span>
+            <span class="tag">Memory Systems</span>
+            <span class="tag">Performance Reasoning</span>
+            <span class="tag">Parallel Processing</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="plans">
+      <h2 class="section-title">Current Plans</h2>
+      <p class="section-subtitle">
+        My current academic direction and what I am preparing for next.
+      </p>
+
+      <div class="card">
+        <ul class="timeline">
+          <li>Complete undergraduate study in Computer Engineering with early graduation.</li>
+          <li>Prepare for graduate school application in computer architecture and related systems fields.</li>
+          <li>Continue strengthening fundamentals in architecture, operating systems, and performance analysis.</li>
+          <li>Build a more research-oriented portfolio centered on low-level system understanding.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="contact">
+      <h2 class="section-title">Contact</h2>
+      <p class="section-subtitle">
+        Feel free to reach out or visit my GitHub and portfolio repository.
+      </p>
+
+      <div class="card">
+        <ul class="contact-list">
+          <li><strong>GitHub:</strong> <a href="https://github.com/dlarjsdn" target="_blank">github.com/dlarjsdn</a></li>
+          <li><strong>Portfolio Site:</strong> <a href="https://dlarjsdn.github.io" target="_blank">dlarjsdn.github.io</a></li>
+          <li><strong>Email:</strong> your_email@example.com</li>
+          <li><strong>University:</strong> Hankuk University of Foreign Studies</li>
+          <li><strong>Major:</strong> Computer Engineering</li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    © 2026 Geonwoo · Computer Engineering Portfolio
+  </footer>
 </body>
 </html>
