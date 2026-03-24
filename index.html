@@ -1,234 +1,213 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>dlarjsdn | Portfolio</title>
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Geonwoo | Computer Engineering Portfolio</title>
 
-    body {
-      font-family: Arial, sans-serif;
-      line-height: 1.6;
-      background: #f5f7fb;
-      color: #222;
-    }
+<style>
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f4f6f9;
+    color: #222;
+}
 
-    a {
-      color: #1a73e8;
-      text-decoration: none;
-    }
+header {
+    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+    color: white;
+    padding: 80px 20px;
+    text-align: center;
+}
 
-    a:hover {
-      text-decoration: underline;
-    }
+header h1 {
+    font-size: 48px;
+    margin-bottom: 10px;
+}
 
-    .container {
-      width: 90%;
-      max-width: 1000px;
-      margin: 0 auto;
-    }
+header h2 {
+    font-weight: normal;
+    opacity: 0.9;
+}
 
-    header {
-      background: linear-gradient(135deg, #1f3c88, #39a0ed);
-      color: white;
-      padding: 80px 20px 60px;
-      text-align: center;
-    }
+nav {
+    background: white;
+    padding: 15px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+    position: sticky;
+    top: 0;
+}
 
-    header h1 {
-      font-size: 3rem;
-      margin-bottom: 10px;
-    }
+nav a {
+    margin: 0 20px;
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+}
 
-    header p {
-      font-size: 1.1rem;
-      opacity: 0.95;
-    }
+section {
+    max-width: 1000px;
+    margin: 60px auto;
+    background: white;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+}
 
-    nav {
-      background: white;
-      border-bottom: 1px solid #ddd;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-    }
+h3 {
+    border-left: 6px solid #2c5364;
+    padding-left: 10px;
+}
 
-    nav .container {
-      display: flex;
-      justify-content: center;
-      gap: 30px;
-      padding: 15px 0;
-      flex-wrap: wrap;
-    }
+.profile {
+    display: flex;
+    gap: 40px;
+    align-items: center;
+}
 
-    section {
-      padding: 60px 0;
-    }
+.profile img {
+    width: 200px;
+    border-radius: 50%;
+}
 
-    .section-title {
-      font-size: 2rem;
-      margin-bottom: 25px;
-      color: #1f3c88;
-      text-align: center;
-    }
+.skill-box span {
+    display: inline-block;
+    background: #e8edf3;
+    padding: 8px 14px;
+    margin: 6px;
+    border-radius: 20px;
+    font-size: 14px;
+}
 
-    .card {
-      background: white;
-      border-radius: 16px;
-      padding: 25px;
-      box-shadow: 0 8px 24px rgba(0,0,0,0.08);
-      margin-bottom: 20px;
-    }
+.project {
+    margin-bottom: 25px;
+}
 
-    .about p,
-    .contact p {
-      font-size: 1.05rem;
-      margin-bottom: 10px;
-    }
-
-    .skills-list {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      justify-content: center;
-    }
-
-    .skill {
-      background: #eaf2ff;
-      color: #1f3c88;
-      padding: 10px 16px;
-      border-radius: 999px;
-      font-weight: bold;
-      font-size: 0.95rem;
-    }
-
-    .projects {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 20px;
-    }
-
-    .project-card h3 {
-      margin-bottom: 10px;
-      color: #222;
-    }
-
-    .project-card p {
-      color: #555;
-      margin-bottom: 10px;
-    }
-
-    footer {
-      background: #1f3c88;
-      color: white;
-      text-align: center;
-      padding: 25px 10px;
-      margin-top: 30px;
-    }
-
-    @media (max-width: 600px) {
-      header h1 {
-        font-size: 2.2rem;
-      }
-
-      .section-title {
-        font-size: 1.6rem;
-      }
-    }
-  </style>
+footer {
+    text-align: center;
+    padding: 30px;
+    background: #2c5364;
+    color: white;
+    margin-top: 60px;
+}
+</style>
 </head>
+
 <body>
 
-  <header>
-    <div class="container">
-      <h1>김건우</h1>
-      <p>Computer Engineering Student | Developer | Learner</p>
-    </div>
-  </header>
+<header>
+    <h1>Geonwoo</h1>
+    <h2>Computer Engineering Student | Computer Architecture Research Interest</h2>
+</header>
 
-  <nav>
-    <div class="container">
-      <a href="#about">About</a>
-      <a href="#skills">Skills</a>
-      <a href="#projects">Projects</a>
-      <a href="#contact">Contact</a>
-    </div>
-  </nav>
+<nav>
+    <a href="#about">About</a>
+    <a href="#interest">Research Interest</a>
+    <a href="#skills">Skills</a>
+    <a href="#projects">Academic Work</a>
+    <a href="#contact">Contact</a>
+</nav>
 
-  <section id="about">
-    <div class="container">
-      <h2 class="section-title">About Me</h2>
-      <div class="card about">
-        <p>안녕하세요. 컴퓨터공학을 공부하고 있는 학생입니다.</p>
-        <p>시스템, 반도체, AI, 프로그래밍에 관심이 있으며 다양한 프로젝트를 통해 문제 해결 능력을 키우고 있습니다.</p>
-        <p>새로운 기술을 배우고 직접 구현해보는 것을 좋아합니다.</p>
-      </div>
-    </div>
-  </section>
+<section id="about">
+    <h3>About Me</h3>
 
-  <section id="skills">
-    <div class="container">
-      <h2 class="section-title">Skills</h2>
-      <div class="card">
-        <div class="skills-list">
-          <div class="skill">C</div>
-          <div class="skill">C++</div>
-          <div class="skill">Python</div>
-          <div class="skill">HTML</div>
-          <div class="skill">GitHub</div>
-          <div class="skill">Linux</div>
-          <div class="skill">Verilog</div>
-          <div class="skill">SQL</div>
+    <div class="profile">
+        <!-- ⭐ 여기 사진 넣으면 됨 -->
+        <img src="profile.jpg" alt="profile photo">
+
+        <div>
+            <p>
+            안녕하세요. 한국외국어대학교 컴퓨터공학부 4학년에 재학 중인 Geonwoo입니다.
+            조기 졸업을 예정하고 있으며 컴퓨터구조 및 시스템 분야 대학원 진학을 목표로 학업을 이어가고 있습니다.
+            </p>
+
+            <p>
+            학부 과정에서 운영체제, 컴퓨터구조, 병렬처리와 같은 low-level 시스템 과목에 큰 흥미를 느끼게 되었고,
+            소프트웨어와 하드웨어의 상호작용을 깊이 이해하는 것을 목표로 공부하고 있습니다.
+            </p>
+
+            <p>
+            특히 CPU 및 GPU 아키텍처, 메모리 계층 구조, 멀티코어 시스템에서의 성능 특성 분석에 관심이 있으며,
+            실제 시스템 동작을 분석하고 실험하는 과정 자체를 즐기는 편입니다.
+            </p>
         </div>
-      </div>
     </div>
-  </section>
+</section>
 
-  <section id="projects">
-    <div class="container">
-      <h2 class="section-title">Projects</h2>
-      <div class="projects">
+<section id="interest">
+    <h3>Research Interest</h3>
 
-        <div class="card project-card">
-          <h3>xv6 Scheduler Project</h3>
-          <p>xv6 운영체제에서 스케줄러를 직접 수정하고, 프로세스 동작을 분석한 프로젝트입니다.</p>
-          <p><strong>Tech:</strong> C, OS, Linux</p>
-        </div>
+    <ul>
+        <li>Computer Architecture</li>
+        <li>GPU Architecture & Parallel Computing</li>
+        <li>Memory Hierarchy and Cache Behavior</li>
+        <li>Operating System Internals</li>
+        <li>Performance Analysis and System Optimization</li>
+        <li>Multi-core and Many-core Processing</li>
+        <li>Deep Learning System Architecture</li>
+    </ul>
+</section>
 
-        <div class="card project-card">
-          <h3>DBMS Project</h3>
-          <p>데이터베이스 설계 및 SQL 질의를 실습하며 관계형 데이터 모델을 이해한 프로젝트입니다.</p>
-          <p><strong>Tech:</strong> SQL, DBMS</p>
-        </div>
+<section id="skills">
+    <h3>Technical Skills</h3>
 
-        <div class="card project-card">
-          <h3>AI / System Study</h3>
-          <p>AI와 시스템 구조를 학습하며 관련 개념을 정리하고 응용 가능성을 탐구하고 있습니다.</p>
-          <p><strong>Tech:</strong> Python, AI, System</p>
-        </div>
-
-      </div>
+    <div class="skill-box">
+        <span>C</span>
+        <span>C++</span>
+        <span>Python</span>
+        <span>Linux</span>
+        <span>Assembly (basic)</span>
+        <span>Git / GitHub</span>
+        <span>System Programming</span>
+        <span>Performance Analysis</span>
     </div>
-  </section>
+</section>
 
-  <section id="contact">
-    <div class="container">
-      <h2 class="section-title">Contact</h2>
-      <div class="card contact">
-        <p><strong>GitHub:</strong> <a href="https://github.com/dlarjsdn" target="_blank">https://github.com/dlarjsdn</a></p>
-        <p><strong>Email:</strong> your_email@example.com</p>
-      </div>
+<section id="projects">
+    <h3>Academic Work & Study Topics</h3>
+
+    <div class="project">
+        <strong>CPU Pipeline & Hazard Analysis</strong>
+        <p>
+        Instruction-level parallelism과 pipeline hazard의 발생 원인을 분석하고,
+        성능에 미치는 영향을 이해하기 위한 이론 및 실험 기반 학습을 수행하였습니다.
+        </p>
     </div>
-  </section>
 
-  <footer>
-    <p>© 2026 Kim Gunwoo. All rights reserved.</p>
-  </footer>
+    <div class="project">
+        <strong>Operating System Scheduling Study</strong>
+        <p>
+        다양한 scheduling policy의 특성을 비교하며 프로세스 실행 흐름과 context switching overhead에 대해 분석하였습니다.
+        </p>
+    </div>
+
+    <div class="project">
+        <strong>Memory Hierarchy Performance Study</strong>
+        <p>
+        Cache locality, memory access pattern, latency hiding 기법 등에 대한 이해를 중심으로 시스템 성능 분석을 수행하였습니다.
+        </p>
+    </div>
+
+    <div class="project">
+        <strong>Synchronization & Concurrency Concepts</strong>
+        <p>
+        Mutual exclusion, semaphore, producer-consumer problem 등 병행성 제어 기법을 학습하고 구현 실습을 진행하였습니다.
+        </p>
+    </div>
+
+</section>
+
+<section id="contact">
+    <h3>Contact</h3>
+
+    <p>GitHub: https://github.com/dlarjsdn</p>
+    <p>Email: (여기 본인 이메일 넣기)</p>
+</section>
+
+<footer>
+    © 2026 Geonwoo | Computer Engineering Portfolio
+</footer>
 
 </body>
 </html>
